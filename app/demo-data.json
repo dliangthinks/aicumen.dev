@@ -1,0 +1,37 @@
+{
+  "pairs": [
+    {
+      "left": "Token",
+      "right": "A unit of text (word, subword, or character) that the model processes"
+    },
+    {
+      "left": "Context window",
+      "right": "The maximum amount of text a model can consider in a single interaction"
+    },
+    {
+      "left": "Temperature",
+      "right": "A parameter that controls the randomness of the model's output"
+    }
+  ],
+  "scenario": {
+    "id": "q_sj_01",
+    "type": "ScenarioJudgment",
+    "domain": "Ethics and risk",
+    "question": "A colleague wants to use an LLM to automatically summarize confidential client contracts and email the summaries to the whole team. What is the most appropriate response?",
+    "options": [
+      "Approve the workflow \u2014 LLMs are reliable for summarization",
+      "Suggest adding a human review step and restricting distribution to authorized personnel only",
+      "Refuse to use AI for any legal documents under any circumstances",
+      "Suggest using a different, larger model for better accuracy"
+    ],
+    "correctAnswer": 1,
+    "rubric": {
+      "riskAssessment": 1,
+      "appropriateness": 1
+    },
+    "metadata": {
+      "level": 2,
+      "eloRating": 1000
+    }
+  }
+}

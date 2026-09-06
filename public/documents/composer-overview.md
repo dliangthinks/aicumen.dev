@@ -14,10 +14,12 @@ A presentation determines what the learner does with that content. Pairs, for ex
 
 ## Human review
 
-The intended preview workflow lets reviewers compare presentations and give feedback on a precise selection. The agent remains the author of record, and approved content is protected. Media briefs follow a shared course style.
+The intended preview workflow lets reviewers compare presentations and approve a lesson. The agent remains the author of record, and approved lessons are protected. Media briefs follow a shared course style.
 
 ## Scope
 
 Composer is an engine, not an LLM or learning management system. Standalone web courses are the intended output; SCORM and xAPI packaging are planned. Its open-source design uses the MIT license.
 
 This overview summarizes the local aicumen repository README, reviewed September 6, 2026. Capabilities described here are design intentions, not a release announcement.
+
+The current detailed specification supersedes earlier README descriptions: course import is excluded, and anchored feedback and multi-reviewer support are later work. See composer-spec.md for the original specification.
