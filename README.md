@@ -20,7 +20,11 @@ npm run build
 npm start
 ```
 
-The production server listens only on 127.0.0.1 by default. No Sites account, hosting integration, deployment, or API key is required.
+The production server listens only on 127.0.0.1 by default.
+
+## Deploy
+
+`next.config.ts` sets `output: 'export'`, so `npm run build` writes a fully static site to `dist/client` (`index.html`, `composer.html`, `assess.html`, `404.html`, and assets). `vercel.json` points Vercel at that directory with clean URLs, so `/composer` serves `composer.html`. Any static host works the same way.
 
 ## Pages
 
