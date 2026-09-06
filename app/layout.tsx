@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: '%s · Aicumen',
   },
   description:
-    'Tools and frameworks for developing AI expertise. Discover Composer, an agent-driven course authoring engine, and Assess, an AI competency assessment framework.',
+    'Tools and frameworks for developing AI expertise. Discover Composer, an agent-driven course authoring engine, and Assessor, an adaptive AI competency assessment.',
   icons: { icon: '/favicon.svg' },
 };
 export default function RootLayout({

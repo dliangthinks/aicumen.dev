@@ -1,6 +1,6 @@
-# Assess — Framework overview
+# Assessor — Framework overview
 
-Assess presents the AI competence development framework implemented in the SAICA project. It is a formative diagnostic for self-directed professional development, not a certification or ranking instrument.
+Assessor presents the AI competence development framework implemented in the SAICA project. It is a formative diagnostic for self-directed professional development, not a certification or ranking instrument.
 
 ## Assessment design
 

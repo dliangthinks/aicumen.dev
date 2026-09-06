@@ -1,17 +1,9 @@
 'use client';
 
 import { useEffect, useState, type ReactNode } from 'react';
-import {
-  ArrowRight,
-  RotateCcw,
-  Pause,
-  Play,
-  Check,
-  ArrowUpRight,
-} from './icons';
+import { ArrowRight, RotateCcw, Pause, Play, Check } from './icons';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import demo from './demo-data.json';
 
 export function SiteMotion() {
@@ -53,7 +45,7 @@ export function SiteMotion() {
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches)
       document
         .querySelectorAll(
-          '.editorial-section,.feature-section,.domains-section,.belief,.closing,.cross-project,.product-card',
+          '.editorial-section,.feature-section,.domains-section,.belief,.closing,.cross-project,.product-card,.why-block',
         )
         .forEach((el) => {
           if (el.getBoundingClientRect().top > window.innerHeight) {
@@ -86,29 +78,23 @@ export function SiteMotion() {
 
 const journey = [
   {
-    value: 'create',
-    label: 'Create',
-    text: 'Turn what you know into an experience someone can learn from.',
-    href: '/composer',
-    link: 'Explore Composer',
+    value: 'learn',
+    label: 'Learn',
+    text: 'Understand what agents can actually do, where they fall short, and what good judgment with them looks like.',
   },
   {
-    value: 'assess',
-    label: 'Assess',
-    text: 'Look at your skills and judgment across seven domains of AI practice.',
-    href: '/assess',
-    link: 'Explore Assess',
+    value: 'build',
+    label: 'Build',
+    text: 'Make software for agents and AI-powered workflows that put that understanding to work, in the open.',
   },
   {
-    value: 'refine',
-    label: 'Refine',
-    text: 'Use feedback to guide your next attempt. Better judgment grows in the loop.',
-    href: '/#products',
-    link: 'Find your next step',
+    value: 'inspire',
+    label: 'Inspire',
+    text: 'Share what worked and what did not, so the next person starts further along. Then the cycle turns again.',
   },
 ];
 export function Journey({ children }: { children: ReactNode }) {
-  const [step, setStep] = useState('create');
+  const [step, setStep] = useState('learn');
   return (
     <div className="journey" data-step={step}>
       {children}
@@ -118,7 +104,7 @@ export function Journey({ children }: { children: ReactNode }) {
         className="journey-tabs"
       >
         <TabsList
-          aria-label="Explore the development loop"
+          aria-label="Explore the aicumen cycle"
           className="journey-controls"
         >
           {journey.map((s, i) => (
@@ -130,10 +116,6 @@ export function Journey({ children }: { children: ReactNode }) {
         {journey.map((s) => (
           <TabsContent key={s.value} value={s.value}>
             <p>{s.text}</p>
-            <a href={s.href}>
-              {s.link}
-              <ArrowUpRight size={15} />
-            </a>
           </TabsContent>
         ))}
       </Tabs>
@@ -183,14 +165,15 @@ export function ComposerDemo() {
       <div className="section-heading">
         <span className="eyebrow">Try the idea / Interactive demo</span>
         <h2>
-          Same content.
+          Same three pairs.
           <br />
-          <span>A different kind of learning.</span>
+          <span>Read them, explore them, then try them.</span>
         </h2>
       </div>
       <p className="demo-intro">
-        Switch the presentation. Read the definitions, turn over a flashcard, or
-        try matching them. Every view uses the same three pairs.
+        Switch the presentation and the stance changes with it. Read the
+        glossary, turn over a flashcard, then match them. Nothing is retyped
+        between views.
       </p>
       <div className="composer-lab">
         <aside className="source-panel">
@@ -342,139 +325,5 @@ export function ComposerDemo() {
         page. This is not a connection to the unreleased Composer engine.
       </p>
     </section>
-  );
-}
-
-export function AssessmentSample() {
-  const [choice, setChoice] = useState<string | null>(null);
-  const [submitted, setSubmitted] = useState(false);
-  const q = demo.scenario;
-  const correct = Number(choice) === q.correctAnswer;
-  return (
-    <section className="demo-section wrap" id="assessment-sample">
-      <div className="section-heading">
-        <span className="eyebrow">Try a question / From the repository</span>
-        <h2>
-          Competence shows up
-          <br />
-          <span>in the decisions you make.</span>
-        </h2>
-      </div>
-      <div className="assessment-lab">
-        <aside className="sample-context">
-          <span className="lab-label">SCENARIO JUDGMENT</span>
-          <h3>
-            What would
-            <br /> <em>you do?</em>
-          </h3>
-          <p>
-            This question comes directly from SAICA’s assessment bank. It tests
-            professional judgment in a situation where simply using a stronger
-            model would miss the point.
-          </p>
-          <div className="sample-meta">
-            <span>Domain</span>
-            <strong>{q.domain}</strong>
-            <span>Question</span>
-            <strong>{q.id}</strong>
-          </div>
-        </aside>
-        <div className="sample-question">
-          <p className="lab-label">ONE SAMPLE / NOT A FULL ASSESSMENT</p>
-          <h3 id="scenario-question">{q.question}</h3>
-          <RadioGroup
-            value={choice}
-            onValueChange={(v) => {
-              setChoice(String(v));
-              setSubmitted(false);
-            }}
-            aria-labelledby="scenario-question"
-            className="scenario-options"
-          >
-            {q.options.map((option, i) => (
-              <div
-                className="scenario-option"
-                key={option}
-                data-selected={choice === String(i)}
-              >
-                <RadioGroupItem
-                  value={String(i)}
-                  id={`scenario-option-${i}`}
-                  aria-labelledby={`scenario-label-${i}`}
-                />
-                <label
-                  id={`scenario-label-${i}`}
-                  htmlFor={`scenario-option-${i}`}
-                >
-                  <b>{String.fromCharCode(65 + i)}.</b> {option}
-                </label>
-              </div>
-            ))}
-          </RadioGroup>
-          <div className="scenario-actions">
-            <Button
-              className="button ink"
-              disabled={choice === null}
-              onClick={() => setSubmitted(true)}
-            >
-              Check my answer <ArrowRight size={16} />
-            </Button>
-            <Button
-              variant="ghost"
-              onClick={() => {
-                setChoice(null);
-                setSubmitted(false);
-              }}
-            >
-              Reset
-            </Button>
-          </div>
-          {submitted && (
-            <div
-              className={`answer-feedback ${correct ? 'correct' : 'incorrect'}`}
-              role="status"
-            >
-              <strong>
-                {correct
-                  ? 'That matches the answer key.'
-                  : 'Here’s what the answer key prioritizes.'}
-              </strong>
-              <p>{q.options[q.correctAnswer]}.</p>
-              <span>
-                This item is scored by an exact match to the repository’s answer
-                key. One response does not establish a competency level.
-              </span>
-            </div>
-          )}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function DomainExplorer({ domains }: { domains: string[][] }) {
-  return (
-    <Tabs defaultValue="0" orientation="vertical" className="domain-explorer">
-      <TabsList aria-label="AI competency domains" className="domain-selector">
-        {domains.map(([name], i) => (
-          <TabsTrigger key={name} value={String(i)}>
-            <span>0{i + 1}</span>
-            {name}
-            <ArrowUpRight size={16} />
-          </TabsTrigger>
-        ))}
-      </TabsList>
-      {domains.map(([name, description], i) => (
-        <TabsContent key={name} value={String(i)} className="domain-detail">
-          <span className="domain-big-num">0{i + 1}</span>
-          <span className="lab-label">DOMAIN / {i + 1} OF 7</span>
-          <h3>{name}</h3>
-          <p>{description}</p>
-          <span className="domain-footnote">
-            Every assessment session aims to cover all seven domains.
-          </span>
-        </TabsContent>
-      ))}
-    </Tabs>
   );
 }

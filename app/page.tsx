@@ -15,23 +15,23 @@ export default function Home() {
         <section className="hero wrap">
           <div className="hero-top">
             <span className="eyebrow">
-              <i /> A home for AI expertise
+              <i /> Learn. Build. Inspire.
             </span>
             <span className="edition">TOOLS + FRAMEWORKS / 001</span>
           </div>
           <div className="hero-grid">
             <div>
               <h1>
-                Go beyond
+                Learn. Build.
                 <br />
-                using AI.
+                Inspire.
                 <br />
-                <em>Develop acumen.</em>
+                <em>Develop aicumen.</em>
               </h1>
               <p className="hero-copy">
-                The tools to create meaningful learning.
+                Software for agents. AI-powered workflows.
                 <br />
-                The clarity to know what to learn next.
+                Built in the open, so what we learn becomes what you build.
               </p>
               <a className="button lime" href="#products">
                 Explore the projects <ArrowDown size={18} />
@@ -42,7 +42,7 @@ export default function Home() {
             </Journey>
           </div>
           <div className="hero-bottom">
-            <span>Human judgment. Expanded possibility.</span>
+            <span>One cycle. Every project is a turn of it.</span>
             <span>
               SCROLL TO EXPLORE <ArrowDown size={14} />
             </span>
@@ -52,32 +52,33 @@ export default function Home() {
           <div className="section-heading">
             <span className="eyebrow">01 / The projects</span>
             <h2>
-              Two ways forward.
+              What we are building.
               <br />
-              <span>One direction: capability.</span>
+              <span>Software for agents. AI-powered workflows.</span>
             </h2>
           </div>
           <div className="product-grid">
             <a className="product-card composer-card" href="/composer">
               <div className="card-heading">
                 <Layers3 size={26} />
-                <span className="tag">Course authoring / In development</span>
+                <span className="tag">Software for agents / In development</span>
               </div>
               <div className="card-copy">
                 <h3>
                   Composer<span>↗</span>
                 </h3>
                 <p>
-                  What Blender is to 3D,
+                  A course engine
                   <br />
-                  Composer aims to be for e-learning.
+                  whose author is an AI agent.
                 </p>
               </div>
               <ShapeDiagram />
               <div className="card-bottom">
                 <p>
-                  An open-source engine that lets AI agents turn your expertise
-                  into interactive courses.
+                  An open-source MCP server. The agent structures the lesson,
+                  chooses presentations, briefs the media, and styles the
+                  course. You judge the result.
                 </p>
                 <span className="text-link">
                   Meet Composer <ArrowUpRight size={19} />
@@ -87,11 +88,11 @@ export default function Home() {
             <a className="product-card assess-card" href="/assess">
               <div className="card-heading">
                 <ScanLine size={26} />
-                <span className="tag">Competency assessment</span>
+                <span className="tag">AI-powered workflow / Competency assessment</span>
               </div>
               <div className="card-copy">
                 <h3>
-                  Assess<span>↗</span>
+                  Assessor<span>↗</span>
                 </h3>
                 <p>
                   Understand your capabilities.
@@ -102,11 +103,12 @@ export default function Home() {
               <DomainDiagram />
               <div className="card-bottom">
                 <p>
-                  An adaptive assessment framework that turns AI skills and
-                  judgment into a path for development.
+                  An adaptive, AI-scored assessment that places your AI practice
+                  on a five-level ladder and tells you what the next rung asks
+                  of you.
                 </p>
                 <span className="text-link">
-                  Explore Assess <ArrowUpRight size={19} />
+                  Explore Assessor <ArrowUpRight size={19} />
                 </span>
               </div>
             </a>
@@ -116,23 +118,23 @@ export default function Home() {
           <span className="eyebrow">02 / The idea behind Aicumen</span>
           <div>
             <h2>
-              Access to intelligence
+              Aicumen is a cycle,
               <br />
-              is just the beginning.
+              not a stockpile of tools.
             </h2>
             <p>
-              Expertise grows when you make something, question the result, and
-              try again with better judgment. Aicumen brings together tools for
-              that work: creating learning worth engaging with, and
-              understanding how your own AI practice can grow.
+              Learn what agents can actually do and where they fall short. Build
+              software and workflows that put that to work. Share what worked,
+              and what did not, so the next person starts further along. Then
+              the loop turns again. Every project here is one turn of it.
             </p>
           </div>
         </section>
         <section className="closing wrap">
           <p>
-            Less guesswork.
+            Beyond using AI.
             <br />
-            <em>More acumen.</em>
+            <em>More aicumen.</em>
           </p>
           <a
             href="#products"

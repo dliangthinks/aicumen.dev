@@ -1,70 +1,22 @@
 import type { Metadata } from 'next';
 import { ArrowUpRight, ArrowDown, ArrowLeft } from '../icons';
-import { Header, Footer, DomainDiagram } from '../site-components';
+import { Header, Footer } from '../site-components';
+import {
+  LevelLadder,
+  DomainRadar,
+  AdaptiveSimulator,
+  QuestionSet,
+  FormatGrid,
+} from './assess-interactions';
+import { bank, formats, domains, SESSION_LENGTH } from './assess-data';
+
 export const metadata: Metadata = {
-  title: 'Assess — Find your next edge',
+  title: 'Assessor — Find your next edge',
   description:
-    'Explore an adaptive AI competency assessment framework: seven domains, five levels, and a personalized path for professional development. Based on SAICA.',
+    'An adaptive AI competency assessment: five levels of practice, seven domains, a question bank that chooses each item for you, and a report that tells you what to practice next.',
 };
-import { AssessmentSample, DomainExplorer } from '../interactions';
-const domains = [
-  [
-    'Foundational concepts',
-    'Understand how models work, where their limits lie, and what their parameters change.',
-  ],
-  [
-    'Prompting',
-    'Frame requests, supply useful context, and improve an approach when the result falls short.',
-  ],
-  [
-    'Workflow design',
-    'Connect steps, tools, and human checkpoints into a process that works.',
-  ],
-  [
-    'Ethics and risk',
-    'Recognize bias, protect privacy, and judge when the risks outweigh the benefits.',
-  ],
-  [
-    'Tool selection',
-    'Match the model, tool, or approach to the task and its constraints.',
-  ],
-  [
-    'Output evaluation',
-    'Check evidence, detect unreliable claims, and judge the quality of a result.',
-  ],
-  [
-    'Metacognition',
-    'Examine your assumptions, calibrate your confidence, and reflect on your own reasoning.',
-  ],
-];
-const levels = [
-  [
-    '01',
-    'The Copy-Paster',
-    'Uses AI output with limited checking or adaptation.',
-  ],
-  [
-    '02',
-    'The Prompt Crafter',
-    'Prompts deliberately and improves results through iteration.',
-  ],
-  [
-    '03',
-    'The Maker',
-    'Connects tools and critically evaluates multi-step work.',
-  ],
-  [
-    '04',
-    'The Engineer',
-    'Builds reliable workflows with safeguards and clear trade-offs.',
-  ],
-  [
-    '05',
-    'The Orchestrator',
-    'Designs, evaluates, and improves AI systems for others.',
-  ],
-];
-export default function Assess() {
+
+export default function Assessor() {
   return (
     <>
       <Header active="assess" />
@@ -74,12 +26,12 @@ export default function Assess() {
             <ArrowLeft size={15} /> All projects
           </a>
           <div className="detail-title-row">
-            <span className="eyebrow">02 / Assess</span>
+            <span className="eyebrow">02 / Assessor</span>
             <span className="status">
-              <i /> Based on the SAICA framework
+              <i /> Formative diagnostic · In development
             </span>
           </div>
-          <div className="detail-grid">
+          <div className="detail-grid assessor-grid">
             <div>
               <h1>
                 Find your
@@ -87,78 +39,48 @@ export default function Assess() {
                 <em>next edge.</em>
               </h1>
               <p className="detail-lead">
-                Knowing how to prompt is one part of the picture. Understand
-                your AI skills, your judgment, and where to grow next.
+                Knowing how to prompt is one part of the picture. Assessor
+                places your AI practice on a five-level ladder, from copying
+                outputs to orchestrating systems, and tells you what the next
+                rung looks like.
               </p>
-              <a href="#assessment-sample" className="button ink">
-                Try a real question <ArrowDown size={18} />
-              </a>
+              <div className="hero-actions">
+                <a href="#try" className="button ink">
+                  Try five real questions <ArrowDown size={18} />
+                </a>
+                <a href="#adaptive" className="text-link">
+                  See how the bank adapts <ArrowDown size={16} />
+                </a>
+              </div>
             </div>
-            <div className="detail-visual">
-              <span className="eyebrow">AI COMPETENCE / SEVEN DIMENSIONS</span>
-              <DomainDiagram />
-            </div>
+            <LevelLadder />
           </div>
           <div className="assessment-stats">
             <div>
-              <strong>7</strong>
-              <span>Domains of competence</span>
+              <strong>5</strong>
+              <span>Levels, from Copy-Paster to Orchestrator</span>
             </div>
             <div>
-              <strong>12</strong>
-              <span>Adaptive questions per session</span>
+              <strong>{domains.length}</strong>
+              <span>Domains, all covered in every session</span>
+            </div>
+            <div>
+              <strong>{formats.length}</strong>
+              <span>Question formats, five scored by code, seven by rubric</span>
             </div>
             <div>
               <strong>
-                ~20<span> min</span>
+                {SESSION_LENGTH}
+                <span> of {bank.length}</span>
               </strong>
-              <span>Designed assessment length</span>
+              <span>Questions served per session, chosen adaptively</span>
             </div>
           </div>
         </section>
-        <AssessmentSample />
-        <section className="editorial-section wrap" id="framework">
-          <div className="section-heading">
-            <span className="eyebrow">01 / Beyond the right answer</span>
-            <h2>
-              What can you do?
-              <br />
-              <span>How do you decide?</span>
-            </h2>
-          </div>
-          <div className="steps">
-            <article>
-              <span className="step-number">01</span>
-              <h3>Demonstrate your skill.</h3>
-              <p>
-                Write a prompt. Critique an output. Design a workflow. The
-                framework combines structured questions with open-ended tasks
-                that reveal how you think.
-              </p>
-            </article>
-            <article>
-              <span className="step-number">02</span>
-              <h3>Meet the right challenge.</h3>
-              <p>
-                Question difficulty adapts to your responses, while coverage
-                across all seven domains keeps the assessment broader than your
-                strongest skill.
-              </p>
-            </article>
-            <article>
-              <span className="step-number">03</span>
-              <h3>Leave with direction.</h3>
-              <p>
-                The report is designed to connect a competency profile with
-                explained strengths, growth areas, learning resources, and a
-                guide to the next level.
-              </p>
-            </article>
-          </div>
-        </section>
-        <section className="domains-section wrap">
+
+        <section className="domains-section wrap" id="domains">
           <div className="domains-intro">
-            <span className="eyebrow">02 / The whole practitioner</span>
+            <span className="eyebrow">01 / The whole practitioner</span>
             <h2>
               More than
               <br />
@@ -166,133 +88,154 @@ export default function Assess() {
             </h2>
             <p>
               Seven domains bring knowledge, applied skill, and professional
-              judgment into one picture.
+              judgment into one picture. Click a point to open a domain. Switch
+              the profile to see how a report shape changes with practice.
             </p>
           </div>
-          <DomainExplorer domains={domains} />
+          <DomainRadar />
         </section>
-        <section className="editorial-section wrap">
+
+        <section className="editorial-section wrap adaptive-section" id="adaptive">
           <div className="section-heading">
-            <span className="eyebrow">03 / A progression in agency</span>
+            <span className="eyebrow">02 / The adaptive question bank</span>
             <h2>
-              From using outputs
+              Twelve questions.
               <br />
-              <span>to shaping systems.</span>
+              <span>Each one chosen while you answer.</span>
             </h2>
           </div>
-          <div className="levels">
-            {levels.map(([n, title, body]) => (
-              <article key={n}>
-                <span className="level-num">{n}</span>
-                <h3>{title}</h3>
-                <p>{body}</p>
-              </article>
-            ))}
+          <div className="adaptive-copy">
+            <p>
+              A fixed test is either too easy for experts or discouraging for
+              beginners. Assessor rates you the way chess rates players. You
+              start at 1000. Answer well and the rating rises, so the next item
+              is harder. Struggle and it falls. Before it chases difficulty, the
+              engine makes sure it has visited all seven domains.
+            </p>
+            <p>
+              Answer the current item yourself, or set a learner’s true rating
+              and watch a whole session run. Every dot is a real item in the
+              bank, placed by its difficulty.
+            </p>
           </div>
-          <p className="development-note">
-            These personas describe stages of practice, not fixed identities.
-            The framework is a formative development tool; pilot calibration and
-            validation are still planned. It is not designed for hiring,
-            performance reviews, or credentialing.
-          </p>
-          <a
-            className="text-link"
-            href="/documents/assess-framework.md"
-            download
-          >
-            Download the framework overview <ArrowDown size={18} />
-          </a>
-        </section>
-        <section className="editorial-section wrap">
-          <div className="section-heading">
-            <span className="eyebrow">04 / Inside the assessment</span>
-            <h2>
-              A framework you can
-              <br />
-              <span>look inside.</span>
-            </h2>
-          </div>
-          <div className="question-types">
-            {[
-              'Multiple choice',
-              'Multiple select',
-              'Ranking',
-              'Matching',
-              'Scenario judgment',
-              'Prompt writing',
-              'Prompt critique',
-              'Output evaluation',
-              'Short written response',
-              'Workflow design',
-              'Build-step evaluation',
-              'Reflection',
-            ].map((type) => (
-              <span key={type}>{type}</span>
-            ))}
-          </div>
-          <div className="capability-details">
-            <details open>
-              <summary>How the next question is chosen</summary>
+          <AdaptiveSimulator />
+          <div className="adaptive-notes">
+            <div>
+              <span className="lab-label">01 / COVERAGE FIRST</span>
               <p>
-                The adaptive engine starts at an Elo rating of 1000. Each scored
-                response adjusts that estimate using a K-factor of 32. Before
-                optimizing difficulty across the whole bank, it prioritizes
-                domains you have not yet encountered. Within the chosen pool, it
-                selects among questions close to the estimate and avoids
-                repeating an item. A standard session serves 12 questions.
+                While any domain is unseen, the next item comes from one of
+                them. Seven of the twelve questions are spent this way.
               </p>
-            </details>
-            <details>
-              <summary>How answers are scored</summary>
+            </div>
+            <div>
+              <span className="lab-label">02 / THEN TARGET</span>
               <p>
-                Structured items use scoring rules: exact matches, partial
-                credit, pair accuracy, or ordering accuracy. Open-ended items
-                use weighted rubric dimensions with concrete level descriptions.
-                The current prototype calls a local Claude CLI for that scoring;
-                if it is unavailable, the code falls back to a provisional
-                heuristic. The sample on this page uses only its original answer
-                key and makes no AI scoring call.
+                The remaining five go to the items closest to your rating,
+                where a question tells the engine the most.
+              </p>
+            </div>
+            <div>
+              <span className="lab-label">03 / MOVE THE RATING</span>
+              <p>
+                Beating a hard item moves you further than beating an easy
+                one. A K-factor of 32 lets twelve answers span the whole ladder.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="demo-section wrap" id="try">
+          <div className="section-heading">
+            <span className="eyebrow">03 / Try it</span>
+            <h2>
+              Competence shows up
+              <br />
+              <span>in the decisions you make.</span>
+            </h2>
+          </div>
+          <p className="demo-intro">
+            Five questions in five formats, one from each of five domains,
+            rising in difficulty. Structured formats are scored by the same
+            rules a full session uses. The open-ended formats, which need a
+            rubric and a scorer, are described below.
+          </p>
+          <QuestionSet />
+          <p className="demo-disclosure">
+            Five items are a taste, not a placement. A full session serves
+            twelve, adapts to you, and includes open-ended tasks.
+          </p>
+        </section>
+
+        <section className="editorial-section wrap formats-section">
+          <div className="section-heading">
+            <span className="eyebrow">04 / Twelve formats</span>
+            <h2>
+              Recognizing an answer
+              <br />
+              <span>is not the same as producing one.</span>
+            </h2>
+          </div>
+          <p className="demo-intro">
+            Multiple choice measures recognition, the lowest rung of Bloom’s
+            taxonomy. Someone who can define “hallucination” may still miss one
+            in a real output. So seven of the twelve formats ask you to write,
+            critique, design, or reflect, and are scored against a rubric.
+          </p>
+          <FormatGrid />
+          <div className="capability-details">
+            <details>
+              <summary>How open-ended answers are scored</summary>
+              <p>
+                Each open-ended item maps to two to four rubric dimensions,
+                drawn from fifteen shared ones such as accuracy, reasoning,
+                risk awareness, and safeguards. The scorer sees the full
+                one-to-five description of every dimension, reasons before it
+                scores, is told to ignore length, and never computes the final
+                number. Code applies the weights. The prototype calls a local
+                Claude model for this step.
               </p>
             </details>
             <details>
               <summary>What the report gives you</summary>
               <p>
-                The report code groups your answers by domain, calculates
-                averages, identifies relative strengths and growth areas, and
-                suggests domain-specific learning paths. The broader framework
-                also specifies per-question rationale and guidance for
-                progression. A profile is meant to help you choose your next
-                practice, rather than reduce your expertise to one number.
+                A level placement with the behaviors that define it, a radar
+                profile across the seven domains, strengths and growth areas,
+                a per-question review with the rubric rationale, learning paths
+                aimed at the weakest domains, and a guide to the behaviors that
+                mark the next level. It is meant to produce a specific next
+                practice, not a number.
               </p>
             </details>
             <details>
-              <summary>
-                What is implemented, and what still needs validation
-              </summary>
+              <summary>What is built, and what still needs validation</summary>
               <p>
-                The repository contains an adaptive selection engine, question
-                components, structured scoring, an open-ended scoring
-                integration, and report views. The local bank currently contains
-                59 questions across all 12 formats. Difficulty calibration,
-                human–AI scoring reliability, and fairness studies are planned.
-                These development-stage results are not a professional
-                credential.
+                The adaptive engine, all twelve renderers, structured scoring,
+                rubric-based AI scoring, session persistence, and the report are
+                built. The bank holds {bank.length} items. Difficulty ratings
+                are expert estimates awaiting pilot calibration. Human–AI
+                scoring reliability and a fairness analysis across linguistic
+                backgrounds are planned. The framework is for self-directed
+                development, not hiring, performance review, or credentialing.
               </p>
             </details>
           </div>
           <div className="source-links">
+            <a href="/documents/assess-framework.md" download>
+              Framework overview <ArrowDown size={16} />
+            </a>
             <a href="/documents/saica-readme.md" download>
-              Read the original framework <ArrowDown size={16} />
+              Read the design rationale <ArrowDown size={16} />
             </a>
             <a
               href="https://github.com/dliangthinks/saica"
               target="_blank"
               rel="noreferrer"
             >
-              View SAICA on GitHub <ArrowUpRight size={16} />
+              Source on GitHub <ArrowUpRight size={16} />
             </a>
           </div>
         </section>
+
         <a href="/composer" className="cross-project wrap">
           <div>
             <span className="eyebrow">Explore the other project</span>

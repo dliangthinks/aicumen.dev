@@ -23,7 +23,7 @@ export function Header({ active }: { active: string }) {
             href="/assess"
             aria-current={active === 'assess' ? 'page' : undefined}
           >
-            Assess
+            Assessor
           </a>
           <a href="/#products" className="nav-explore">
             Explore the projects <ArrowUpRight size={16} />
@@ -39,7 +39,7 @@ export function Footer() {
       <a href="/" className="wordmark">
         aicumen<span className="brand-domain">.dev</span>
       </a>
-      <p>AI expertise is a practice.</p>
+      <p>Learn. Build. Inspire.</p>
       <span>© {new Date().getFullYear()} Aicumen</span>
     </footer>
   );
@@ -47,11 +47,11 @@ export function Footer() {
 export function LearningLoop() {
   return (
     <div className="learning-loop">
-      <span className="diagram-label">EXPERTISE IS A PRACTICE</span>
+      <span className="diagram-label">THE AICUMEN CYCLE</span>
       <svg viewBox="0 0 480 440" role="img" aria-labelledby="loop-title">
         <title id="loop-title">
-          Develop expertise through a repeating cycle of creating, assessing,
-          and refining.
+          Aicumen is a repeating cycle of learning, building, and inspiring
+          others.
         </title>
         <defs>
           <marker
@@ -107,15 +107,15 @@ export function LearningLoop() {
         <g className="orbit-label">
           <rect x="180" y="21" width="120" height="39" rx="20" />
           <text x="240" y="46" textAnchor="middle">
-            01 / CREATE
+            01 / LEARN
           </text>
           <rect x="327" y="293" width="126" height="39" rx="20" />
           <text x="390" y="318" textAnchor="middle">
-            02 / ASSESS
+            02 / BUILD
           </text>
           <rect x="27" y="293" width="126" height="39" rx="20" />
           <text x="90" y="318" textAnchor="middle">
-            03 / REFINE
+            03 / INSPIRE
           </text>
         </g>
         <g className="orbit-satellite">
@@ -124,7 +124,7 @@ export function LearningLoop() {
         <circle cx="240" cy="318" r="4" fill="#d3fb52" />
       </svg>
       <div className="diagram-note">
-        <span>MAKE → REFLECT → GROW</span>
+        <span>LEARN → BUILD → INSPIRE</span>
         <span>↺ REPEAT</span>
       </div>
     </div>

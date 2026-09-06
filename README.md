@@ -1,6 +1,6 @@
 # aicument.dev
 
-The local Aicumen website: a landing page and dedicated Composer and Assess product pages. This repository includes the complete design, animations, interactive demos, and source-based product descriptions.
+The local Aicumen website: a landing page and dedicated Composer and Assessor product pages. This repository includes the complete design, animations, interactive demos, and source-based product descriptions.
 
 ## Run locally
 
@@ -25,14 +25,14 @@ The production server listens only on 127.0.0.1 by default. No Sites account, ho
 ## Pages
 
 - `/`: Aicumen landing page with the interactive development loop.
-- `/composer`: course-authoring architecture and roadmap, plus glossary, flashcards, and matching demonstrations.
-- `/assess`: assessment framework, a real SAICA sample question, domain explorer, and scoring details.
+- `/composer`: why an agent-native course engine exists, with a replayed tool-call build, a drag comparison, a prose-to-structure reveal, a shape atlas, and the glossary, flashcards, and matching demonstration.
+- `/assess`: the Assessor page: an auto-stepping five-level ladder, an interactive seven-domain radar, a live Elo session simulator over the real question bank, five scored sample questions in five formats, and a twelve-format explorer.
 
-Composer's demo illustrates the unreleased engine's design principles. Assess's one-question demo uses the repository's answer key; it is not the full adaptive assessment and does not invoke AI scoring.
+Composer's demo illustrates the unreleased engine's design principles. Assessor's sample questions use the repository's deterministic scorers and Elo update; the simulator uses the bank's item metadata only. Neither is the full adaptive assessment and neither invokes AI scoring.
 
 ## Source material
 
-Product copy was based on the local `aicumen` and `saica` repositories in the same parent directory. The detailed Composer specification takes precedence over older README descriptions. Downloadable source material is in `public/documents`; demo questions are in `app/demo-data.json`.
+Product copy was based on the local `aicumen` and `saica` repositories in the same parent directory. The Composer page follows the `aicumen` README's "Why this exists" argument; the hero replay and lesson-plan example come from `docs/transcript-lesson-01.md`, and the shape atlas from `docs/block-model.md`. Downloadable source material is in `public/documents`; demo questions are in `app/demo-data.json`.
 
 ## Development
 
