@@ -1,4 +1,4 @@
-# aicument.dev
+# aicumen.dev
 
 The local Aicumen website: a landing page and dedicated Composer and Assessor product pages. This repository includes the complete design, animations, interactive demos, and source-based product descriptions.
 
